@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+	<title>My Fashion Shop</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <script src="all.js"></script>
+	 <link rel="stylesheet" href="style.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: Aria, Helvetica, sans-serif;
+		}
+		.header {
+			display: flex;
+			justify-content: space-between;
+			padding: 12px 50px;
+			height: 90px;
+			align-items: center;
+		}	
+		li {
+			list-style: none;
+		}
+		a {
+			text-decoration: none;
+			font-weight: bold;
+			color: black;
+		}
+		.logo {	flex: 1;
+		}
+		.menu {	
+			flex: 3;
+			display: flex;
+		}
+		.menu li {
+			font-size: 16px;			
+			position: relative;
+			padding: 0 12px;
+		}		
+		.menu li a{
+			font-size: 16px;
+			display:block;
+			line-height: 25px;
+		}
+		.menu li:hover .sub-menu {					
+			display: block;
+		}
+		.sub-menu {
+			position: absolute;
+			width: 150px;
+			border: 1px solid #ccc;
+			padding: 10px 0 10px 5px;
+			display: none;			
+		}
+		.sub-menu ul a {
+			font-weight: normal;
+		}
+		.sub-menu ul li a:hover {
+			color: red;
+		}
+		.others {
+			flex: 1;
+			display: flex;
+		}
+		.others li {
+			padding: 0 12px;
+			display:flex;
+		}
+		
+		.others li:first-child input {
+			width: 150px;
+			border: none;
+			border-bottom: 1px solid #333;			
+		}		
+		input:focus {
+			outline: 0;
+		}
+		/****************************/
+		.footer {
+			padding: 50px 0 0;
+			border-top: 2px solid black;
+		}
+		.footer-container {
+		   display: flex;
+		   justify-content: center;
+		   align-items: center;
+		   flex-direction: column;
+		}
+		.footer-container p {
+			font-weight: bold;
+			font-size: 18px;
+			font-family: var(--main-text-font);
+		}
+		.app-google {
+			margin: 25px 0;
+		}
+		.app-google img {
+			width: 300px;
+			cursor: p;
+		}		
+		/**************************/
+		.footer-items {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 10px 0;
+		}
+		.footer-items li {
+			padding: 12px;
+			position: relative;
+		}
+		.footer-items li a {
+			color: #333;
+			font-family: var(--main-text-font);
+			font-weight: bold;
+			font-size: 16px;
+		}
+		.footer-items li::after {
+			position: absolute;
+			content: "";
+			width: 1px;
+			height: 50%;
+			background-color: #cccccc;
+			right: 0;
+		}
+		.footer-items li:last-child::after {
+			display: none;
+		}
+		.footer-items li:last-child i {
+			font-size: 16px;
+			margin-right: 12px;
+			color: #333333;
+		}
+		.footer-items li:last-child i:hover {
+			color: black;
+		}
+		.footer-items img {
+			width: 100px;
+		}
+		.footer-bottom {
+			padding: 20px 0;
+			font-size: 12px;
+			font-family: var(--main-text-font);
+			background-color: #dddddd;
+			width: 100%;
+			text-align: center;
+			margin-top: 30px;			
+		}
+		/*****************danh mục sản phẩm*****************/
+		.container {
+			max-width: 1200px;
+			margin: auto;
+		}
+		.row{
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.cartegory {
+			padding: 100px 0 0;
+		}
+		.cartegory-top {
+			margin-bottom: 50px;
+		}
+		.cartegory-top p {
+			font-family: var(--main-text-font);
+			margin: 0 12px;
+			font-size: 12px;
+		}
+		.cartegory-left {
+			width: 20%;
+		}
+		.cartegory-right {
+			width: 80%;
+		}
+		.cartegory-right-top-item:first-child {
+			flex: 2;
+			font-size: 16px;
+			font-family: var(--main-text-font);
+			font-weight: bold;
+
+		}
+		.cartegory-right-top-item{
+			flex: 1;
+			padding: 0 12px;
+		}
+		.cartegory-right-top-item button {
+			width: 100%;
+			padding: 10px 15px;
+			display: flex;
+			justify-content: space-between;
+			background-color: #ffff;
+			border: 1px solid #dddddd;
+			cursor: pointer;
+		}
+		.cartegory-right-top-item select {
+			width: 100%;
+			padding: 10px 15px;
+			display: flex;
+			justify-content: space-between;
+			background-color: #ffff;
+			border: 1px solid #dddddd;
+			cursor: pointer;
+		}
+		.cartegory-right-content {
+			margin-top: 20px;
+			justify-content: space-between;
+		}
+		.cartegory-right-content-item {
+			width: calc(25% - 12px);
+			text-align: center;
+			padding: 12px 0;
+		}
+		.cartegory-right-content-item h1 {
+			font-size: 11px;
+			font-family: var(--main-text-font);
+			margin-top: 6px;
+			color: #333333;
+		}
+		.cartegory-right-content-item img{
+			width: 100%;
+		}
+		.cartegory-right-content-item p {
+			font-size: 12px;
+		}
+		.cartegory-right-bottom {
+			justify-content: space-between;
+			margin: 30px 0 20px;
+			width: 100%;
+		}
+		.cartegory-right-bottom p {
+			font-family: var(--main-text-font);
+			font-size: 12px;
+		}
+		.cartegory-left ul li {
+			padding: 12px 0;
+		}
+		.cartegory-left ul li>a {
+			color: black;
+			font-size: 16px;
+			font-weight: bold;
+			font-family: var(--main-text-font);
+		}
+		.cartegory-left ul li ul li {
+			padding-left: 10px;
+		}
+		.cartegory-left-li ul{
+			display: none;
+		}
+		.cartegory-left-li.block ul {
+			display: block;
+		}
+		.cartegory-left ul li ul li a {
+			color: #333333;
+			font-size: 12px;
+		}
+	</style>	
+	<script>
+	
+	</script>
+</head>
+<body>
+<!-------------------header menu--------------------->
+<div class="header">
+	<div class="logo">
+		<img src="Image/logo0.jpg">
+	</div>
+	<div class="menu">		
+		<li><a href="#">NAM</a></li>
+		<li><a href="#">NỮ</a>
+			<ul class="sub-menu">
+				<li><a href="#">Hàng mới về</a></li>
+				<li><a href="#">Áo</a>
+					<ul>
+					<li><a href="#">Áo sơ mi</a></li>
+					<li><a href="#">Áo vest</a></li>
+					<li><a href="#">Áo khoác</a></li>
+					<li><a href="#">Áo thun</a></li>
+					<li><a href="#">Áo len</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Quần</a>
+					<ul>
+					<li><a href="#">Quần tây</a></li>
+					<li><a href="#">Quần âu</a></li>
+					<li><a href="#">Quần jean</a></li>
+					<li><a href="#">Quần lửng</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><a href="#">TRẺ EM</a></li>
+		<li><a href="#">SALE OFF</a></li>
+		<li><a href="#">BỘ SƯU TẬP</a>
+			<ul class="sub-menu">
+				<li><a href="#">Năm 2020</a></li>
+				<li><a href="#">Năm 2021</a></li>
+				<li><a href="#">NTK AAA</a></li>
+			</ul>
+		</li>
+		<li><a href="#">THÔNG TIN</a></li>		
+	</div>
+	<div class="others">		
+		<li><input type="text" placeholder="Tìm kiếm"><a ><a href="#"><i class="fas fa-search"></i></a></li>
+		<li><a href="#"> <i class="fa fa-paw"></i></a></li>	
+		<li><a href="#"> <i class="fa fa-user"></i></a></li>	
+		<li><a href="#"> <i class="fa fa-shopping-bag"></i></a></li>	
+	</div>
+</div>
+<!-------------------danh mục sản phẩm--------------------->
+<div class="cartegory">        
+        <div class="container">
+            <div class="row">
+                <div class="cartegory-left">
+                    <ul>
+                        <li class="cartegory-left-li "><a href="#">NỮ</a>
+                            <ul>
+                                <li><a href="">HÀNG NỮ MỚI VỀ</a></li>
+                                <li><a href="">BEYOND TRENDY</a></li>
+                                <li><a href="">JEANS FOR JOY</a></li>
+                                <li><a href="">JEANS FOR JOY</a></li>
+                            </ul>
+                        </li>
+                        <li class="cartegory-left-li"><a href="#">NAM</a>
+                            <ul>
+                                <li><a href="">HÀNG NAM MỚI VỀ</a></li>
+                                <li><a href="">BEYOND TRENDY</a></li>
+                                <li><a href="">JEANS FOR JOY</a></li>
+                                <li><a href="">JEANS FOR JOY</a></li>
+                            </ul>
+                        </li>
+                        <li class="cartegory-left-li"><a href="">TRE EM</a></li>
+                        <li class="cartegory-left-li"><a href="">BỘ SƯU TẬP</a></li>
+                        <li class="cartegory-left-li"><a href="">ĐỒ BẢO HỘ</a></li>
+                    </ul>
+
+                </div>
+                <div class="cartegory-right row">
+                    <div class="cartegory-right-top-item">
+                        <p>HÀNG NỮ MỚI VỀ</p>
+                    </div>
+                    <div class="cartegory-right-top-item">
+                       <button><span>Bộ lọc</span> <i class="fas fa-sort-down"></i></button>
+                    </div>
+                    <div class="cartegory-right-top-item">
+                        <select name="" id="">
+                            <option value="">Sắp xếp</option>
+                            <option value="">Giá cao đến thấp</option>
+                            <option value="">Giá thấp đến cao</option>
+                        </select>
+                     </div>
+                     <div class="cartegory-right-content row">
+                        <div class="cartegory-right-content-item">
+                            <img src="Image/sp1.jpg" alt="">
+                            <h1>ĐẦM ÔM HỌA TIẾT HOA MS 48T0033</h1>
+                            <p>790.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+                            <img src="Image/sp2.jpg" alt="">
+                            <h1>ĐẦM ÔM HỌA TIẾT HOA MS 48T0033</h1>
+                            <p>790.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+                            <img src="Image/sp3.jpg" alt="">
+                            <h1>ĐẦM ÔM HỌA TIẾT HOA MS 48T0033</h1>
+                            <p>790.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+                            <img src="Image/sp4.jpg" alt="">
+                            <h1>ĐẦM ÔM HỌA TIẾT HOA MS 48T0033</h1>
+                            <p>790.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+                            <img src="Image/sp5.jpg" alt="">
+                            <h1>ĐẦM ÔM HỌA TIẾT HOA MS 48T0033</h1>
+                            <p>790.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+                            <img src="Image/sp6.jpg" alt="">
+                            <h1>ĐẦM ÔM HỌA TIẾT HOA MS 48T0033</h1>
+                            <p>790.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+                            <img src="Image/sp7.jpg" alt="">
+                            <h1>ĐẦM ÔM HỌA TIẾT HOA MS 48T0033</h1>
+                            <p>790.000<sup>đ</sup></p>
+                        </div>
+                        <div class="cartegory-right-content-item">
+                            <img src="Image/sp8.jpg" alt="">
+                            <h1>ĐẦM ÔM HỌA TIẾT HOA MS 48T0033</h1>
+                            <p>790.000<sup>đ</sup></p>
+                        </div>
+                    </div>
+
+
+                   <div class="cartegory-right-bottom row">
+                       <div class="cartegory-right-bottom-items">
+                           <p>Hiện thị 2 <span>|</span> 4 sản phẩm</p>
+                       </div>
+                       <div class="cartegory-right-bottom-items">
+                        <p><span>«</span>1 2 3 4 5<span>»</span>Trang cuối</p>
+                        </div>
+                   </div> 
+                </div>
+                
+            </div>
+        </div>
+</div>
+<!-------------------footer--------------------->
+ <div class="footer">
+    <div class="footer-container">
+        <p>Tải ứng dụng MY FASHION</p>
+        <div class="app-google">
+            <a href=""><img src="Image/appstore.png" alt=""></a>
+            <a href=""> <img src="Image/googleplay.png" alt=""></a>
+        </div>
+        
+        <div class="footer-items">
+            <li><a href=""><img src="Image/dathongbao.png" alt=""></a></li>
+            <li><a href="">Liên hệ</a></li>
+            <li><a href="">Tuyển dụng</a></li>
+            <li><a href="">Giới thiệu</a></li>
+            <li><a href=""><i class="fab fa-facebook-f"></i></a><a href=""><i class="fab fa-youtube"></i></a></li>
+        </div>
+        <div class="footer-bottom">
+            Công ty Cổ phần thiết kế thời trang MY FASHION với số đăng ký kinh doanh: 0123456789 <br>
+Địa chỉ đăng ký: 38 Nguyễn Hội, TP.Phan Thiết, Bình Thuận, Việt Nam - 02523 xxx xxxxx <br>
+Đặt hàng online : 0903 xxx xxxx .
+            ©MY FASHION All rights reserved
+        </div>
+    </div>
+</div>
+</body>
+</html>	
